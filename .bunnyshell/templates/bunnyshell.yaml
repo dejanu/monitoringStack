@@ -1,0 +1,58 @@
+kind: Environment
+name: test
+type: primary
+components:
+    -
+        kind: Service
+        name: grafana
+        dockerCompose:
+            image: 'grafana/grafana:9.5.2'
+            ports:
+                - '3000:3000'
+        hosts:
+            -
+                hostname: 'grafana-{{ env.base_domain }}'
+                path: /
+                servicePort: 3000
+    -
+        kind: Service
+        name: mynode
+        dockerCompose:
+            hostname: nodeexporter
+            image: prom/node-exporter
+            ports:
+                - '9100:9100'
+        hosts:
+            -
+                hostname: 'mynode-{{ env.base_domain }}'
+                path: /
+                servicePort: 9100
+    -
+        kind: Service
+        name: prometheus
+        dockerCompose:
+            command:
+                - '--web.enable-lifecycle'
+                - '--config.file=/etc/prometheus/prometheus.yml'
+            hostname: prometheus
+            image: 'prom/prometheus:latest'
+            ports:
+                - '9090:9090'
+        hosts:
+            -
+                hostname: 'prometheus-{{ env.base_domain }}'
+                path: /
+                servicePort: 9090
+    -
+        kind: Service
+        name: scrapeapp
+        dockerCompose:
+            hostname: goexporter
+            image: 'dejanualex/go_promexporter:1.0'
+            ports:
+                - '5000:5000'
+        hosts:
+            -
+                hostname: 'scrapeapp-{{ env.base_domain }}'
+                path: /
+                servicePort: 5000
