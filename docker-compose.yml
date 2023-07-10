@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   prometheus:
-    image: "dejanualex/prometheus:${GRAFANA_TAG}" 
+    image: "dejanualex/prometheus:${PROMETHEUS_TAG}" 
     hostname: prometheus
     container_name: localprometheus
     command:

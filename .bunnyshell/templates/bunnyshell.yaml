@@ -1,5 +1,5 @@
 kind: Environment
-name: teste
+name: dev
 type: primary
 urlHandle: monitoring
 components:
@@ -8,8 +8,8 @@ components:
         name: grafana
         dockerCompose:
             environment:
-                GF_SECURITY_ADMIN_PASSWORD: 'bns_secret()'
-                GF_SECURITY_ADMIN_USER: 'bns_secret()'
+                GF_SECURITY_ADMIN_PASSWORD: test123
+                GF_SECURITY_ADMIN_USER: alex
             image: 'grafana/grafana:9.5.2'
             ports:
                 - '3000:3000'
@@ -37,9 +37,8 @@ components:
         dockerCompose:
             command:
                 - '--web.enable-lifecycle'
-                - '--config.file=/etc/prometheus/prometheus.yml'
             hostname: prometheus
-            image: 'prom/prometheus:v2.44.0'
+            image: 'dejanualex/prometheus:9.5.2'
             ports:
                 - '9090:9090'
         hosts:
