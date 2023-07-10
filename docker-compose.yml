@@ -26,13 +26,11 @@ services:
       - prometheus
   
   scrapeapp:
-    # image: dejanualex/go_promexporter:${EXPORTER_TAG}
+    image: dejanualex/go_promexporter:${EXPORTER_TAG}
     hostname: goexporter
-    build:
-      context: ./go_exporter
+    # build:
+    #   context: ./go_exporter
     container_name: localgoexporter
-    volumes:
-      - ./graf_volume:/etc/grafana/provisioning/datasources/
     ports:
       - "5000:5000"
     links:
