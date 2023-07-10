@@ -38,7 +38,7 @@ components:
             command:
                 - '--web.enable-lifecycle'
             hostname: prometheus
-            image: 'dejanualex/prometheus:9.5.2'
+            image: 'dejanualex/prometheus:1.0'
             ports:
                 - '9090:9090'
         hosts:
