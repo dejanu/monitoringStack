@@ -24,7 +24,7 @@ services:
       - prometheus
   
   scrapeapp:
-    image: dejanualex/go_promexporter:1.0
+    image: dejanualex/go_promexporter:${EXPORTER_TAG}
     hostname: goexporter
     container_name: localgoexporter
     ports:
