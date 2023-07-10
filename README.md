@@ -17,3 +17,8 @@ docker-compose -f docker-compose.yml down
 * Prometheus should be available : http://127.0.0.1:9090/
 * Grafana should be available: http://127.0.0.1:3000/login
 * Blackbox GO exporter should be availalbe: http://127.0.0.1:5000/ and http://127.0.0.1:5000/metrics
+
+
+## Bunnyshell setup
+
+![Monitoring Stack](src/services.PNG)
