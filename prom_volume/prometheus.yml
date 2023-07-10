@@ -5,17 +5,16 @@ global:
 
 scrape_configs:
   # The job name is added as a label job=job_name to anu timeseries scraped from this config
-  - job_name: 'prometheusdej'
-
+  - job_name: 'prometheus_metrics'
   # metrics defaults to /metrics
   # scheme defaults to http
     static_configs:
       -  targets: ['localhost:9090']
     
-  - job_name: 'golangexporter'
+  - job_name: 'golangexporter_metrics'
     static_configs:
       - targets: ['goexporter:5000']
 
-  - job_name: 'firstnode'
+  - job_name: 'node_metrics'
     static_configs:
       - targets: ['nodeexporter:9100']
