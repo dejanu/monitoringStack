@@ -16,6 +16,9 @@ services:
   grafana:
     image: "grafana/grafana:${GRAFANA_TAG}"
     container_name: localgrafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
     ports:
       - "3000:3000"
     volumes:
