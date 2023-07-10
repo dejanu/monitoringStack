@@ -15,13 +15,13 @@ services:
   grafana:
     image: "grafana/grafana:${GRAFANA_TAG}"
     container_name: localgrafana
+    volumes:
+      - ./graf_volume:/etc/grafana/provisioning/datasources/
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
     ports:
       - "3000:3000"
-    volumes:
-      - ./graf_volume/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
     links:
       - prometheus
   
