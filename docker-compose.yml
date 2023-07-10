@@ -43,4 +43,10 @@ services:
     links:
       - prometheus
 
+volumes:
+  prom_volume:
+  graf_volume:
+  
+
+
 

@@ -1,0 +1,16 @@
+name: Grafana + Promethes + Exporter
+description: This template can be used to create a new environment for a monitoring stack using based on Grafana, Prometheus and Go Exporter.
+tags:
+   - Grafana
+   - Prometheus
+   - Golang
+icons: [ 'Grafana', 'Prometheus', 'Golang' ]
+stack:
+  packages:
+    - name: Grafana
+      version: '9.5.2'
+    - name: Prometheus
+      version: '2.44.0'
+    - name: Golang
+      version: '1.20.5'
+discoverable: true
