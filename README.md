@@ -21,4 +21,4 @@ docker-compose -f docker-compose.yml down
 
 ## Bunnyshell setup
 
-![Monitoring Stack](src/services.PNG)
+![Monitoring Stack](src/services.png)
