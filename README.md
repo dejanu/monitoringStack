@@ -1,6 +1,8 @@
 # monitoringStack
 Monitoring stack comprised of Grafana/Prometheus/Golang
 
+![Monitoring Stack](src/stack.PNG)
+
 ## Local setup
 
 * Spin up the stack
