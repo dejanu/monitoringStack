@@ -9,6 +9,8 @@ Monitoring stack comprised of Grafana/Prometheus/Golang
 docker-compose -f docker-compose.yml config
 # start in foreground
 docker-compose -f docker-compose.yml up --remove-orphans
+# stop services
+docker-compose -f docker-compose.yml down
 ```
 * Prometheus should be available : http://127.0.0.1:9090/
 * Grafana should be available: http://127.0.0.1:3000/login
