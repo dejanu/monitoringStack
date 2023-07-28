@@ -7,11 +7,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+// Handler for the root path '/'
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "index.html")
+}
+
 func main() {
 	http.Handle("/metrics", promhttp.Handler())
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, " <p> Metrics are available at <b>/metrics</b> </p> ")
-	})
+	http.HandleFunc("/", rootHandler)
 	fmt.Println("Server is running on port 5000 with metrics on /metrics")
 	http.ListenAndServe(":5000", nil)
 }
