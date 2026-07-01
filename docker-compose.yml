@@ -1,11 +1,14 @@
 version: '3.4'
 services:
   prometheus:
-    image: "dejanualex/prometheus:${PROMETHEUS_TAG}" 
+    image: "prom/prometheus:${PROMETHEUS_TAG}"
     hostname: prometheus
     container_name: localprometheus
+    volumes:
+      - ./prom_volume/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--web.enable-lifecycle'
+      - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
       - "9090:9090"
     
@@ -23,10 +26,10 @@ services:
       - prometheus
   
   scrapeapp:
-    image: dejanualex/go_promexporter:${EXPORTER_TAG}
+    #image: dejanualex/go_promexporter:${EXPORTER_TAG}
     hostname: goexporter
-    # build:
-    #   context: ./go_exporter
+    build:
+      context: ./go_exporter
     container_name: localgoexporter
     ports:
       - "5000:5000"
@@ -40,3 +43,11 @@ services:
       - "9100:9100"
     links:
       - prometheus
+
+volumes:
+  prom_volume:
+  graf_volume:
+  
+
+
+
