@@ -26,4 +26,6 @@ docker-compose -f docker-compose.yaml up -d
 
 # check DNS resolution
 docker exec prometheus nslookup prom
+
+docker-compose -f docker-compose.yaml down
 ```
