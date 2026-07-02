@@ -23,6 +23,7 @@ docker-compose -f docker-compose.yml down
 * Blackbox Go exporter endpoints: http://127.0.0.1:5000/ and http://127.0.0.1:5000/metrics .
 
     - Check `promhttp_metric_handler_requests_total` standard Prometheus Go client counter metric that tracks the total number of HTTP requests made to an application's `/metric`
+    - Check series `promhttp_metric_handler_requests_total{instance="goexporter:5000"}` and `docker restart localgoexporter` to reset the counter
 
 ## Bunnyshell setup
 
