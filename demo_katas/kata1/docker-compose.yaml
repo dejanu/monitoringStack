@@ -4,6 +4,8 @@ services:
     container_name: prom
     ports:
       - "9091:9090"
+    networks:
+      - demo
 
   prometheus:
     image: prom/prometheus
@@ -17,3 +19,9 @@ services:
       - --web.enable-lifecycle
     depends_on:
       - prom
+    networks:
+      - demo
+
+networks:
+  demo:
+    name: demo
