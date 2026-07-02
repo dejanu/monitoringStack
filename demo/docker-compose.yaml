@@ -1,0 +1,19 @@
+services:
+  prom:
+    image: prom/prometheus
+    container_name: prom
+    ports:
+      - "9091:9090"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.enable-lifecycle
+    depends_on:
+      - prom
