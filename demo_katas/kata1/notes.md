@@ -13,6 +13,9 @@ cat /etc/prometheus/prometheus.yml
 
 # reload prometheus to pick-up config changes
 curl -X POST http://localhost:9090/-/reload
+
+curl http://localhost:9091/-/healthy
+curl http://localhost:9091/-/ready
 ```
 
 ```bash
