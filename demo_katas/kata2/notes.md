@@ -21,3 +21,10 @@ docker network rm promnet
 docker-compose -f docker-compose.yaml up -d
 docker-compose -f docker-compose.yaml down
 ```
+
+* Metrics 
+
+```bash
+# ounter — total seconds each CPU core has spent in a given mode since boot.
+node_cpu_seconds_total
+````
