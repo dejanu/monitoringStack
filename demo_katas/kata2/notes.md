@@ -1,7 +1,10 @@
 
-* Prometheus + Node Exporter
+* Prometheus + [Node Exporter](https://hub.docker.com/r/prom/node-exporter)
 
 ```bash
+
+# start vanilla node exporter
+
 # create network
 docker network create promnet
 
@@ -26,6 +29,6 @@ docker-compose -f docker-compose.yaml down
 * Metrics 
 
 ```bash
-# ounter — total seconds each CPU core has spent in a given mode since boot.
+# counter — total seconds each CPU core has spent in a given mode since boot.
 node_cpu_seconds_total
 ````
