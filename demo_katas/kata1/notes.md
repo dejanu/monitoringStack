@@ -2,9 +2,10 @@
 
 ```bash
 # start prom instance
-docker run --rm  --name prom -d -p 9091:9090 prom/prometheus
+docker run --rm --name prom -d -p 9091:9090 prom/prometheus
 
-# main prometheus that scrapes other prometheus (update prometheus.yaml to add target prom)
+# spin up another prometheus that scrape the first prometheus instance prom
+# update prometheus.yaml to add target prom)
 docker run --rm -d --name prometheus -p 9090:9090 -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml  prom/prometheus --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle
 
 # start the same container with docker-compose file
@@ -20,12 +21,9 @@ curl -X POST http://localhost:9090/-/reload
 
 curl http://localhost:9090/-/healthy
 curl http://localhost:9090/-/ready
-
-
 ```
 
 ```bash
-
 # Container ↔ Container (one container talking directly to another)
 # get container private IP
 docker inspect prom --format '{{json .NetworkSettings.Networks}}'

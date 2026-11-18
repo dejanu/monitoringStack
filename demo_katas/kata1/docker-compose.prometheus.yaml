@@ -9,3 +9,9 @@ services:
     command:
       - --config.file=/etc/prometheus/prometheus.yml
       - --web.enable-lifecycle
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
