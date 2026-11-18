@@ -5,11 +5,13 @@ Monitoring stack comprised of Grafana/Prometheus/Golang
 
 ## Local setup
 
-* Spin up standalone [Go web-app/exporter](https://hub.docker.com/repository/docker/dejanualex/go_promexporter/general):
+* Spin up standalone [Go web-app/exporter](https://hub.docker.com/repository/docker/dejanualex/go_promexporter/general) and check `promhttp_metric_handler_requests_total{code="200"}` metric
+
+```bash
+docker run --rm -p 5000:5000 dejanualex/go_promexporter:1.1
 ```
-docker run -p 5000:5000 dejanualex/go_promexporter:1.1
-```
-* Spin up the stack
+* Spin up the stack:
+
 ```bash
 # check config
 docker-compose -f docker-compose.yml config
@@ -24,6 +26,8 @@ docker-compose -f docker-compose.yml down
 
     - Check `promhttp_metric_handler_requests_total` standard Prometheus Go client counter metric that tracks the total number of HTTP requests made to an application's `/metric`
     - Check series `promhttp_metric_handler_requests_total{instance="goexporter:5000"}` and `docker restart localgoexporter` to reset the counter
+
+* Grafana [quick dashboard](https://grafana.com/grafana/dashboards/), check for Node Exporter Full
 
 ## Bunnyshell setup
 

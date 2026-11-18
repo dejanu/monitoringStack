@@ -2,17 +2,14 @@
 * Prometheus + [Node Exporter](https://hub.docker.com/r/prom/node-exporter)
 
 ```bash
-
 # start vanilla node exporter
-docker run --name node_exporter -d -p 9100:9100 prom/node-exporter
+docker run --rm --name node_exporter -p 9100:9100 prom/node-exporter
 
 # create network
 docker network create promnet
 
 # start node exporter
-docker run --network promnet --name node_exporter -d \
-  -p 9100:9100 \
-  prom/node-exporter
+docker run --network promnet --name node_exporter -d -p 9100:9100 prom/node-exporter
 
 # start prometheus
 docker run  --network promnet --rm -d --name prometheus -p 9090:9090 -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml   prom/prometheus --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle
