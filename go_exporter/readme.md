@@ -11,6 +11,6 @@ go mod init dejanualex/goexporter
 ```bash
 # install gin, previously declared in the import
 go get .
-# explicitly get the dependecy using semantic version
+# explicitly get the dependency using semantic version
 go get github.com/gin-gonic/gin@v1.7.2
 ```
